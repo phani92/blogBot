@@ -1,4 +1,4 @@
-name: Sync New Blog Posts
+name: Sync Blog Files to GitHub Pages
 
 on:
   push:
@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout blogBot
+      - name: Checkout blogBot repository
         uses: actions/checkout@v3
 
       - name: Set up Git
@@ -19,38 +19,45 @@ jobs:
           git config --global user.name "GitHub Actions"
           git config --global user.email "actions@github.com"
 
-      - name: Check for new blog files
-        id: find_new
-        run: |
-          mkdir -p temp
-          cp -r blog/* temp/ || true
-          echo "files=$(ls temp | jq -R -s -c 'split("\n") | map(select(. != ""))')" >> $GITHUB_OUTPUT
-
-      - name: Clone target repo
+      - name: Clone phani92.github.io repository
         run: |
           git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/phani92/phani92.github.io.git target-repo
 
       - name: Copy new blog files
+        id: copy_files
         run: |
-          for file in $(ls temp); do
-            cp "temp/$file" "target-repo/blogs/"
+          mkdir -p target-repo/blogs
+          NEW_FILES=()
+
+          for file in blog/*; do
+            filename=$(basename "$file")
+            if [ ! -f "target-repo/blogs/$filename" ]; then
+              cp "$file" "target-repo/blogs/$filename"
+              NEW_FILES+=("$filename")
+            fi
           done
+
+          echo "new_files=$(printf '%s\n' "${NEW_FILES[@]}" | jq -R -s -c 'split("\n") | map(select(. != ""))')" >> $GITHUB_OUTPUT
+          echo ${NEW_FILES}
 
       - name: Update blogList.json
         run: |
           cd target-repo/blogs
-          existing=$(cat blogList.json | jq '.')
-          new_files=${{ steps.find_new.outputs.files }}
-          echo $new_files | jq -c '.[]' | while read fname; do
-            if ! echo $existing | jq -e --arg f "$fname" '.[] | select(. == $f)' > /dev/null; then
-              existing=$(echo $existing | jq --arg f "$fname" '. + [$f]')
-            fi
-          done
-          echo $existing | jq '.' > blogList.json
+          # Ensure blogList.json exists
+          if [ ! -f blogList.json ]; then
+            echo "[]" > blogList.json
+          fi
 
-      - name: Commit and push
+          existing=$(cat blogList.json | jq '.')
+          new_files='${{ steps.copy_files.outputs.new_files }}'
+          filtered=$(echo "$new_files" | jq --argjson existing "$existing" '[.[] | select(. as $f | $existing | index($f) | not)]')
+          updated=$(echo "$existing" "$filtered" | jq -s 'add')
+          echo "$updated" | jq '.' > blogList.json
+          cat blogList.json
+
+      - name: Commit and push to phani92.github.io
         run: |
           cd target-repo
           git add blogs/
-          git commit -m "Add new blog post(s) and update blogList.json" || echo "No changes to commit"
-          git push
+          git commit -m "Add new blog posts and update blogList.json" || echo "No changes to commit"
+          git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/phani92/phani92.github.io.git HEAD:main

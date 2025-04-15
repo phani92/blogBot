@@ -9,7 +9,7 @@ api_key = os.getenv("GEMINI_API_KEY") # Change your API key here
 model = "gemini-2.0-flash" # Change your model here
 
 client = genai.Client(api_key=api_key)
-today = datetime.now().strftime("%Y-%m-%d")
+today = datetime.now().strftime("%Y_%m_%d")
 title = f"NVIDIA Stock Performance: {today}"
 file_name = f"stock_NVIDIA_{today}.md"
 
