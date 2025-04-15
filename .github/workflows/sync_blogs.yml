@@ -1,0 +1,56 @@
+name: Sync New Blog Posts
+
+on:
+  push:
+    paths:
+      - blog/**
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout blogBot
+        uses: actions/checkout@v3
+
+      - name: Set up Git
+        run: |
+          git config --global user.name "GitHub Actions"
+          git config --global user.email "actions@github.com"
+
+      - name: Check for new blog files
+        id: find_new
+        run: |
+          mkdir -p temp
+          cp -r blog/* temp/ || true
+          echo "files=$(ls temp | jq -R -s -c 'split("\n") | map(select(. != ""))')" >> $GITHUB_OUTPUT
+
+      - name: Clone target repo
+        run: |
+          git clone https://x-access-token:${{ secrets.GH_PAT }}@github.com/phani92/phani92.github.io.git target-repo
+
+      - name: Copy new blog files
+        run: |
+          for file in $(ls temp); do
+            cp "temp/$file" "target-repo/blogs/"
+          done
+
+      - name: Update blogList.json
+        run: |
+          cd target-repo/blogs
+          existing=$(cat blogList.json | jq '.')
+          new_files=${{ steps.find_new.outputs.files }}
+          echo $new_files | jq -c '.[]' | while read fname; do
+            if ! echo $existing | jq -e --arg f "$fname" '.[] | select(. == $f)' > /dev/null; then
+              existing=$(echo $existing | jq --arg f "$fname" '. + [$f]')
+            fi
+          done
+          echo $existing | jq '.' > blogList.json
+
+      - name: Commit and push
+        run: |
+          cd target-repo
+          git add blogs/
+          git commit -m "Add new blog post(s) and update blogList.json" || echo "No changes to commit"
+          git push
