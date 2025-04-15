@@ -27,7 +27,7 @@ def write_blog():
         with open(path, "w") as f:
             f.write(f"---\ntitle: \"{title}\"\ndate: {today}\n---\n\n{blog_text}")
         print(f"[✅] Blog written to {path}")
-        #os.remove("content_cache.txt")
+        os.remove("content_cache.txt")
     except Exception as e:
         print(f"[❌] Failed to write blog post: {e}")
 
@@ -54,5 +54,5 @@ def generate_text():
         print(f"[❌] Failed to generate blog text using Gemini: {e}")
 
 if __name__ == "__main__":
-    #generate_text()
+    generate_text()
     write_blog()
