@@ -4,6 +4,7 @@
 import os
 from datetime import datetime
 from google import genai
+from google.genai import types
 
 api_key = os.getenv("GEMINI_API_KEY") # Change your API key here
 model = "gemini-2.0-flash" # Change your model here
@@ -34,8 +35,8 @@ def write_blog():
 def generate_text():
     prompt = f"Write a 500 word Markdown blog titled '{title}', incl. reference links."
     try:
-        response = client.models.generate_content(model=model, contents=prompt, temperature=0.25)
-
+        response = client.models.generate_content(model=model, contents=prompt,
+                                                  config=types.GenerateContentConfig(temperature=0.3))
         # Save raw Gemini response to a file for debugging
         os.makedirs("raw_rsp", exist_ok=True)
         with open(f"raw_rsp/response_raw_{today}.txt", "w") as f:

@@ -3,6 +3,7 @@
 * This project uses Github actions to automatically run the program and generate a blog post.
 
 ## How to use
+* Install the dependencies using `pip install -r requirements.txt`
 * In `generate_blog.py`, change the values of
     * `api_key`
     * `model`
