@@ -25,16 +25,16 @@ def write_blog():
         os.makedirs("blog", exist_ok=True)
         path = f"blog/{file_name}"
         with open(path, "w") as f:
-            f.write(f"---\ntitle: \"{title}\"\ndate: {today}\n---\n\n{blog_text}")
+            f.write(f"{blog_text}")
         print(f"[✅] Blog written to {path}")
         os.remove("content_cache.txt")
     except Exception as e:
         print(f"[❌] Failed to write blog post: {e}")
 
 def generate_text():
-    prompt = f"Write 300-500 word Markdown blog titled '{title}', incl. reference links."
+    prompt = f"Write a 500 word Markdown blog titled '{title}', incl. reference links."
     try:
-        response = client.models.generate_content(model=model, contents=prompt)
+        response = client.models.generate_content(model=model, contents=prompt, temperature=0.25)
 
         # Save raw Gemini response to a file for debugging
         os.makedirs("raw_rsp", exist_ok=True)
