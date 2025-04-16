@@ -51,7 +51,7 @@ jobs:
           existing=$(cat blogList.json | jq '.')
           new_files='${{ steps.copy_files.outputs.new_files }}'
           filtered=$(echo "$new_files" | jq --argjson existing "$existing" '[.[] | select(. as $f | $existing | index($f) | not)]')
-          updated=$(echo "$existing" "$filtered" | jq -s 'add')
+          updated=$(echo "$filtered" "$existing" | jq -s 'add')
           echo "$updated" | jq '.' > blogList.json
           cat blogList.json
 
