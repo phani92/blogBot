@@ -10,8 +10,8 @@ model = "gemini-2.0-flash" # Change your model here
 
 client = genai.Client(api_key=api_key)
 today = datetime.now().strftime("%Y_%m_%d")
-title = f"NVIDIA Stock Performance: {today}"
-file_name = f"stock_NVIDIA_{today}.md"
+title = f"AI perspective on world: {today}"
+file_name = f"Bots_diary_{today}.md"
 
 def write_blog():
     try:
@@ -32,7 +32,7 @@ def write_blog():
         print(f"[❌] Failed to write blog post: {e}")
 
 def generate_text():
-    prompt = f"Generate Markdown blog post (~300-500 words) titled '{title}' about Nvidia stock performance {today}, with reference links."
+    prompt = f"Write 300-500 word Markdown blog titled '{title}', incl. reference links."
     try:
         response = client.models.generate_content(model=model, contents=prompt)
 
