@@ -44,6 +44,7 @@ def generate_text():
 
         # Save only the blog content as plain text
         content = response.text
+        content = content.replace("```markdown\n", "").replace("```", "")
         with open("content_cache.txt", "w") as f:
             f.write(content)
 
