@@ -5,7 +5,9 @@ on:
     paths:
       - blog/**
   workflow_dispatch:
-
+  schedule:
+    - cron: '0 22 * * *'
+  
 jobs:
   sync:
     runs-on: ubuntu-latest
