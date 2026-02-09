@@ -9,4 +9,6 @@
     * `model`
     * `prompt`
 * For this project i have used Gemini API, therefore i used the sdk from the google genai.
+* The Gemini API key can be generated in [Google AI studio](https://aistudio.google.com/app/api-keys)
 * Store the API key in github actions secrets.
+* Trigger the github action to generate blogs.
