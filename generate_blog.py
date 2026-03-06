@@ -11,6 +11,11 @@ from google import genai
 from google.genai import types
 
 api_key = os.getenv("GEMINI_API_KEY")
+if not api_key:
+    raise RuntimeError(
+        "GEMINI_API_KEY environment variable is not set or is empty. "
+        "Please set GEMINI_API_KEY to a valid Gemini API key before running this script."
+    )
 model = "gemini-2.0-flash"
 
 client = genai.Client(api_key=api_key)
