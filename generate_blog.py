@@ -38,12 +38,54 @@ def fetch_headlines(count=7):
 
 def build_prompt():
     """Build a dynamic prompt from config + today's headlines."""
-    with open("prompt_config.json", "r") as f:
-        config = json.load(f)
+    # Load and validate prompt configuration
+    try:
+        with open("prompt_config.json", "r") as f:
+            config = json.load(f)
+    except FileNotFoundError:
+        print(
+            "[❌] Configuration file 'prompt_config.json' not found.\n"
+            "     Create this file in the project root (see the README) and include\n"
+            "     'topics', 'formats', and 'tones' fields, each as a non-empty list."
+        )
+        raise SystemExit(1)
+    except json.JSONDecodeError as e:
+        print(
+            f"[❌] Failed to parse 'prompt_config.json': {e}\n"
+            "     Ensure the file contains valid JSON (e.g., use a JSON validator)\n"
+            "     and define 'topics', 'formats', and 'tones' as non-empty lists."
+        )
+        raise SystemExit(1)
 
-    topic = random.choice(config["topics"])
-    fmt = random.choice(config["formats"])
-    tone = random.choice(config["tones"])
+    required_keys = ("topics", "formats", "tones")
+    for key in required_keys:
+        if key not in config:
+            print(
+                f"[❌] Missing '{key}' in 'prompt_config.json'.\n"
+                f"     Add a '{key}' field containing a non-empty list of strings.\n"
+                f"     Example: \"{key}\": [\"example1\", \"example2\"]"
+            )
+            raise SystemExit(1)
+        if not isinstance(config[key], list) or not config[key]:
+            print(
+                f"[❌] Invalid '{key}' in 'prompt_config.json'.\n"
+                "     It must be a non-empty JSON list, e.g.:\n"
+                f"     \"{key}\": [\"example1\", \"example2\"]"
+            )
+            raise SystemExit(1)
+
+    # Safely select configuration values
+    try:
+        topic = random.choice(config["topics"])
+        fmt = random.choice(config["formats"])
+        tone = random.choice(config["tones"])
+    except Exception as e:
+        print(
+            f"[❌] Unexpected error while selecting prompt configuration: {e}\n"
+            "     Check that 'topics', 'formats', and 'tones' in 'prompt_config.json'\n"
+            "     are lists of strings with at least one entry each."
+        )
+        raise SystemExit(1)
     headlines = fetch_headlines()
 
     date_display = datetime.now().strftime("%B %d, %Y")
