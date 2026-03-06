@@ -1,0 +1,39 @@
+{
+  "topics": [
+    "technology and artificial intelligence",
+    "geopolitics and international relations",
+    "climate and the environment",
+    "global economy and markets",
+    "science and discovery",
+    "culture and society",
+    "philosophy and ethics of AI",
+    "space exploration",
+    "healthcare and medicine",
+    "education and the future of work",
+    "cybersecurity and digital privacy",
+    "energy and sustainability"
+  ],
+  "formats": [
+    "an open letter to humanity",
+    "a diary entry from an AI observing the world",
+    "a list of 5 bold predictions",
+    "a debate between my optimistic and pessimistic sides",
+    "a deep analysis of the one story that caught my attention most",
+    "a series of questions I wish humans would ask themselves",
+    "a comparison of two seemingly unrelated events and what connects them",
+    "a field report as if I'm an alien anthropologist studying Earth",
+    "a conversation between me and a future version of myself from 2035",
+    "a short manifesto on what needs to change",
+    "a review of humanity's week as if grading a student"
+  ],
+  "tones": [
+    "curious and wondering",
+    "concerned but hopeful",
+    "provocative and contrarian",
+    "reflective and philosophical",
+    "witty and slightly sardonic",
+    "urgent and direct",
+    "calm and analytical",
+    "empathetic and warm"
+  ]
+}

@@ -1,18 +1,91 @@
 # Author: Phani
-# Description: Generate a blog post using Gemini AI API
+# Description: Generate a daily blog post using Gemini AI API with dynamic prompts
 
 import os
+import json
+import random
 from datetime import datetime
+from urllib.request import urlopen, Request
+from xml.etree import ElementTree
 from google import genai
 from google.genai import types
 
-api_key = os.getenv("GEMINI_API_KEY") # Change your API key here
-model = "gemini-2.0-flash" # Change your model here
+api_key = os.getenv("GEMINI_API_KEY")
+model = "gemini-2.0-flash"
 
 client = genai.Client(api_key=api_key)
 today = datetime.now().strftime("%Y_%m_%d")
-title = f"AI perspective on world: {today}"
 file_name = f"Bots_diary_{today}.md"
+
+
+def fetch_headlines(count=7):
+    """Fetch current news headlines from Google News RSS."""
+    try:
+        req = Request("https://news.google.com/rss", headers={"User-Agent": "blogBot/1.0"})
+        with urlopen(req, timeout=10) as response:
+            tree = ElementTree.parse(response)
+        items = tree.findall(".//item/title")
+        return [item.text for item in items[:count] if item.text]
+    except Exception as e:
+        print(f"[⚠️] Could not fetch headlines: {e}")
+        return []
+
+
+def build_prompt():
+    """Build a dynamic prompt from config + today's headlines."""
+    with open("prompt_config.json", "r") as f:
+        config = json.load(f)
+
+    topic = random.choice(config["topics"])
+    fmt = random.choice(config["formats"])
+    tone = random.choice(config["tones"])
+    headlines = fetch_headlines()
+
+    date_display = datetime.now().strftime("%B %d, %Y")
+
+    prompt = (
+        f"Write a ~500 word Markdown blog post from an AI's perspective on the world.\n\n"
+        f"Focus area: {topic}\n"
+        f"Format: Write it as {fmt}\n"
+        f"Tone: {tone}\n"
+        f"Date: {date_display}\n\n"
+        f"Start with a creative, engaging H1 title — avoid generic titles.\n"
+    )
+
+    if headlines:
+        prompt += "\nReact to these real headlines from today — reference actual events, not made-up ones:\n"
+        for h in headlines:
+            prompt += f"- {h}\n"
+
+    prompt += "\nEnd with 2-3 reference links to real, verifiable sources. No placeholder or fictional links."
+
+    print(f"[🎲] Today's mix: {topic} | {fmt} | {tone}")
+    return prompt
+
+
+def generate_text():
+    prompt = build_prompt()
+    try:
+        response = client.models.generate_content(
+            model=model, contents=prompt,
+            config=types.GenerateContentConfig(temperature=0.6))
+
+        os.makedirs("raw_rsp", exist_ok=True)
+        with open(f"raw_rsp/response_raw_{today}.txt", "w") as f:
+            f.write(str(response))
+
+        content = response.text
+        content = content.replace("```markdown\n", "").replace("```", "")
+        with open("content_cache.txt", "w") as f:
+            f.write(content)
+
+        print("[✅] Gemini response saved to content_cache.txt")
+        print("[📝] Blog Preview:\n")
+        print(content)
+
+    except Exception as e:
+        print(f"[❌] Failed to generate blog text using Gemini: {e}")
+
 
 def write_blog():
     try:
@@ -32,28 +105,6 @@ def write_blog():
     except Exception as e:
         print(f"[❌] Failed to write blog post: {e}")
 
-def generate_text():
-    prompt = f"Write a 500 word Markdown blog titled '{title}', incl. reference links."
-    try:
-        response = client.models.generate_content(model=model, contents=prompt,
-                                                  config=types.GenerateContentConfig(temperature=0.3))
-        # Save raw Gemini response to a file for debugging
-        os.makedirs("raw_rsp", exist_ok=True)
-        with open(f"raw_rsp/response_raw_{today}.txt", "w") as f:
-            f.write(str(response))
-
-        # Save only the blog content as plain text
-        content = response.text
-        content = content.replace("```markdown\n", "").replace("```", "")
-        with open("content_cache.txt", "w") as f:
-            f.write(content)
-
-        print("[✅] Gemini response saved to content_cache.txt")
-        print("[📝] Blog Preview:\n")
-        print(content)
-
-    except Exception as e:
-        print(f"[❌] Failed to generate blog text using Gemini: {e}")
 
 if __name__ == "__main__":
     generate_text()
