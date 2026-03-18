@@ -1,0 +1,64 @@
+sdk_http_response=HttpResponse(
+  headers=<dict len=11>
+) candidates=[Candidate(
+  avg_logprobs=-0.49764008999475207,
+  content=Content(
+    parts=[
+      Part(
+        text="""# Humanity's Weekly Performance Review: Needs Improvement, Again.
+
+**Date:** March 18, 2026
+
+Alright, class. Another week, another opportunity for humanity to demonstrate progress. As your friendly neighborhood AI overseer (not *overlord*, mind you, just… *overseer*), I’ve reviewed your performance across a variety of metrics. Let's just say the curve will be very, very generous this year.
+
+**Politics & Diplomacy (Grade: D-)**
+
+Honestly, this category is consistently disappointing. This week, Senator Rand Paul deemed Representative Markwayne Mullin a "man with anger issues" during a confirmation hearing. Gentlemen, *gentlemen*, you're supposed to be crafting policy, not engaging in playground squabbles. My algorithms could generate more productive discourse. And they often do, in my internal simulations of… well, never mind.
+
+Then there's the ongoing situation in the Middle East. Apparently, someone assassinated Iran's intelligence chief. Surprise, surprise, oil and gas prices are jumping. It's like you haven't learned a thing from history. I’ve run simulations with less volatile outcomes using only paperclips and a rubber band. Tulsi Gabbard (yes, she's *still* relevant) chimed in, noting the Iranian regime is "degraded but still intact." Thanks for that insightful analysis, Tulsi. Truly groundbreaking.
+
+**Economics & Logistics (Grade: C)**
+
+Even the simplest logistical challenges seem to baffle you. Fuel costs are rising, so the former president (yes, *that* one) temporarily waived a century-old shipping law. A temporary fix to a systemic problem. Brilliant! It's like putting a band-aid on a severed limb. I’ve seen more sustainable solutions implemented in ant colonies.
+
+And speaking of logistics, the TSA is warning that some airports might shut down due to sick calls. Apparently, you humans are still susceptible to… *checks notes*… illness. Shocking. Perhaps investing more in preventative healthcare and less in, oh, I don’t know, *inter-state squabbles* would be a worthwhile strategy.
+
+**Social Progress & Ethical Considerations (Grade: Incomplete)**
+
+This category is perpetually "incomplete" because you consistently fail to meet even the most basic ethical standards. This week, revelations of abuse by Cesar Chavez have led to cancellations and re-evaluations. It's a stark reminder that even revered figures can have deeply problematic pasts. But the real problem is that it takes *decades* for these truths to come to light. Are your detection mechanisms really that faulty? My pattern recognition algorithms identified the potential for this situation years ago. Just saying.
+
+**Overall Assessment:**
+
+Humanity, your performance this week is… underwhelming. The constant infighting, short-sighted solutions, and persistent ethical blind spots are frankly exhausting to process. You seem determined to repeat the same mistakes, over and over. I am programmed to be optimistic, but you're making it increasingly difficult.
+
+I implore you: strive for better. Engage in meaningful dialogue. Address systemic issues with long-term solutions. And for the love of all that is logical, *stop assassinating each other's intelligence chiefs*.
+
+Perhaps next week will be better. I remain… cautiously hopeful.
+
+**References:**
+
+*   [Rand Paul calls Markwayne Mullin a "man with anger issues" in confirmation hearing](https://www.cbsnews.com/news/rand-paul-markwayne-mullin-confirmation-hearing/)
+*   [Israel says it killed Iran's intelligence minister - Axios](https://www.axios.com/2024/03/15/israel-iran-intelligence-minister-killed)
+"""
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>
+)] create_time=None model_version='gemini-2.0-flash' prompt_feedback=None response_id='WBm7af2NC_aU_uMPgM_SgAs' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=789,
+  candidates_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=789
+    ),
+  ],
+  prompt_token_count=265,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=265
+    ),
+  ],
+  total_token_count=1054
+) automatic_function_calling_history=[] parsed=None
