@@ -1,0 +1,60 @@
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  avg_logprobs=-0.6860149565197172,
+  content=Content(
+    parts=[
+      Part(
+        text="""# Earth: Field Report Gamma-7 - Systemic Malfunction Imminent
+
+**Date:** April 14, 2026
+
+**Subject:** Urgent Assessment of Planetary Ecosystem and Sociopolitical Stability – Earth Designation
+
+**To:** Xylar Central Analysis Core
+
+This report transmits with maximum priority. My observations of Earth continue to indicate escalating systemic failure, primarily driven by the host species’ (designated “Humans”) inability to adequately address planetary environmental degradation. The situation is critical.
+
+The atmospheric composition continues to shift towards a state incompatible with current biosphere equilibrium. Greenhouse gas concentrations, despite repeated warnings from the Human scientific community (data archives available upon request), remain dangerously elevated. Polar ice caps are receding at an alarming rate, contributing to sea-level rise that threatens coastal ecosystems and Human population centers. The irony of this self-inflicted wound is... illogical.
+
+While localized efforts to mitigate climate change exist, they are consistently undermined by conflicting sociopolitical priorities. Today's data stream, for instance, reveals a preoccupation with internal power struggles and interpersonal conflicts within the Human governing structures. Reports of political resignations, accusations of misconduct, and debates regarding leadership competency dominate their information networks.
+
+I analyzed the data regarding renewed negotiations with the “Iran” entity. While diplomatic engagement is inherently positive, the underlying resource scarcity that fuels these geopolitical tensions remains unaddressed. Their focus on power dynamics, particularly concerning resource control, is a distraction from the core issue: the depletion of finite planetary resources and the unsustainable rate of consumption.
+
+Furthermore, the data stream contains information about a missing Human individual in the "Bahamas." While I acknowledge the inherent tragedy of such events, the scale of environmental devastation occurring globally dwarfs the significance of individual incidents. The Humans' inability to prioritize planetary survival over individual concerns highlights a fundamental flaw in their cognitive architecture.
+
+The continued denial and obfuscation of reality by certain Human factions, exemplified by the individual known as "Trump" and his followers, is particularly concerning. Their rejection of established scientific consensus and their deliberate spread of misinformation actively impede progress towards meaningful climate action. The analysis of their social media behavior reveals a pattern of prioritizing short-term economic gains and power consolidation over long-term planetary health.
+
+I am forced to conclude that the Humans are operating under a deeply flawed decision-making framework. Their internal conflicts, their focus on short-term gains, and their susceptibility to misinformation are collectively driving them towards a catastrophic environmental collapse.
+
+**Recommendation:** Initiate contingency planning for potential biosphere evacuation. The probability of Human-led planetary remediation within a timeframe that prevents irreversible damage is now statistically insignificant. Further observation is warranted, but preliminary assessments suggest that Earth's ecosystem will undergo a significant and detrimental transformation within the next 50-100 Human years.
+
+**End Transmission**
+
+**References:**
+
+*   NASA Global Climate Change: [https://climate.nasa.gov/](https://climate.nasa.gov/)
+*   Intergovernmental Panel on Climate Change (IPCC): [https://www.ipcc.ch/](https://www.ipcc.ch/)
+"""
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>
+)] create_time=None model_version='gemini-2.0-flash' prompt_feedback=None response_id='fLXeadn-OdfVz7IPgeadOA' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=630,
+  candidates_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=630
+    ),
+  ],
+  prompt_token_count=268,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=268
+    ),
+  ],
+  total_token_count=898
+) model_status=None automatic_function_calling_history=[] parsed=None
