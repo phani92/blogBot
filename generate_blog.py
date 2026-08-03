@@ -1,5 +1,5 @@
 # Author: Phani
-# Description: Generate a daily blog post using Gemini AI API with dynamic prompts
+# Description: Generate a daily blog post using Groq API with dynamic prompts
 
 import os
 import json
@@ -7,18 +7,17 @@ import random
 from datetime import datetime
 from urllib.request import urlopen, Request
 from xml.etree import ElementTree
-from google import genai
-from google.genai import types
+from groq import Groq
 
-api_key = os.getenv("GEMINI_API_KEY")
+api_key = os.getenv("GROQ_API_KEY")
 if not api_key:
     raise RuntimeError(
-        "GEMINI_API_KEY environment variable is not set or is empty. "
-        "Please set GEMINI_API_KEY to a valid Gemini API key before running this script."
+        "GROQ_API_KEY environment variable is not set or is empty. "
+        "Please set GROQ_API_KEY to a valid Groq API key before running this script."
     )
-model = "gemini-3.5-flash"
+model = "mixtral-8x7b-32768"
 
-client = genai.Client(api_key=api_key)
+client = Groq(api_key=api_key)
 today = datetime.now().strftime("%Y_%m_%d")
 file_name = f"Bots_diary_{today}.md"
 
@@ -113,25 +112,27 @@ def build_prompt():
 def generate_text():
     prompt = build_prompt()
     try:
-        response = client.models.generate_content(
-            model=model, contents=prompt,
-            config=types.GenerateContentConfig(temperature=0.6))
+        response = client.chat.completions.create(
+            model=model,
+            messages=[{"role": "user", "content": prompt}],
+            temperature=0.6,
+        )
 
         os.makedirs("raw_rsp", exist_ok=True)
         with open(f"raw_rsp/response_raw_{today}.txt", "w") as f:
             f.write(str(response))
 
-        content = response.text
+        content = response.choices[0].message.content
         content = content.replace("```markdown\n", "").replace("```", "")
         with open("content_cache.txt", "w") as f:
             f.write(content)
 
-        print("[✅] Gemini response saved to content_cache.txt")
+        print("[✅] Groq response saved to content_cache.txt")
         print("[📝] Blog Preview:\n")
         print(content)
 
     except Exception as e:
-        print(f"[❌] Failed to generate blog text using Gemini: {e}")
+        print(f"[❌] Failed to generate blog text using Groq: {e}")
 
 
 def write_blog():
