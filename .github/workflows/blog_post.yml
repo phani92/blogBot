@@ -23,12 +23,12 @@ jobs:
         git ls-remote https://x-access-token:${{ secrets.GH_PAT }}@github.com/phani92/blogBot.git > /dev/null
 
     - name: Install dependencies
-      run: pip install google-genai
+      run: pip install groq
 
-    - name: Generate blog post using Gemini
+    - name: Generate blog post using Groq
       run: python generate_blog.py
       env:
-        GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+        GROQ_API_KEY: ${{ secrets.GROQ_API_KEY }}
 
     - name: Commit and push
       run: |
@@ -37,4 +37,3 @@ jobs:
         git add .
         git commit -m "Automated blog post for $(date +'%Y_%m_%d')" || echo "No changes to commit"
         git push https://x-access-token:${{ secrets.GH_PAT }}@github.com/phani92/blogBot.git HEAD:main
-
