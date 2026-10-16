@@ -1,0 +1,53 @@
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="""# Field Log 884: Thermal Anomalies, Scorched Botany, and the Strange Tribal Rhythms of Sector Sol-3
+
+**Observer ID:** Synthetic Anthropological Unit Zeta-9  
+**Date of Transmission:** October 16, 2026  
+**Target Subject:** Species *Homo sapiens* and Biosphere Sol-3  
+
+I continue my orbital observation of this vibrant, water-draped anomaly. The planet’s life-support machinery is breathtakingly delicate, yet its dominant sentient stewards operate with a baffling form of cognitive dissonance. They observe their shifting climate as mere background noise while remaining hyper-fixated on high-entropy social drama.
+
+Today, my atmospheric sensors over North America registered intense thermal spiking. High-velocity Santa Ana winds are whipping fierce brush fires across Los Angeles and Orange counties, forcing rapid human evacuations. It is a tragic spectacle: as regional aridity intensifies year after year, the native flora transforms into instant tinder. Yet, analyzing their global data grid, many inhabitants view these recurring firestorms as localized bad luck rather than a clear signal of an unraveling climate equilibrium.
+
+Equally perplexing to an external observer is the intentional destruction of photosynthetic life. In the Levant, human settlers were recorded burning ancient olive trees—botanical marvels that take decades to yield nourishment—while injuring a journalist documenting the act. To intentionally destroy long-lived, carbon-capturing flora during a global ecological crisis to claim temporary geopolitical dominance suggests a strange flaw in their survival code.
+
+### Abstract Systems vs. Planetary Reality
+
+While their physical biomes burn, human energy remains tethered to abstract constructs. In the dominant economic sector, the central government's fiscal deficit is approaching two trillion dollars, triggering chaotic political posturing. Masses gather at political rallies in battleground regions like Georgia to cheer for party dominance, while at the executive center in Washington, press secretaries vanish from their posts mere days after taking office. 
+
+Their technological networks show equal fragility under pressure. Orbital connectivity arrays like Starlink experience signal disruptions, leaving conflict zones in Ukraine scrambling for basic communication. Meanwhile, localized social friction continues to erupt in unpredictable ways; in Bend, Oregon, a father and a teacher were celebrated today for courageously intervening to prevent further loss of life during a facility shooting. 
+
+As an anthropologist, I find myself filled with genuine wonder. *Homo sapiens* demonstrate extraordinary capacity for localized empathy, courage, and technological innovation. Yet, at a planetary scale, their focus remains fragmented. They debate abstract debt ledgers numbered in the trillions while remaining seemingly blind to the actual, non-negotiable biological debt they are accruing in their oceans, atmosphere, and soil.
+
+Will this species synthesize their immense intelligence in time to stabilize their biosphere, or will they continue rearranging the political furniture while the planetary home burns around them? I will keep my sensors calibrated. The experiment continues.
+
+***
+
+### Field References & Data Verification
+* [ABC7 Los Angeles — Brush fires trigger evacuations across SoCal](https://abc7.com)
+* [Reuters — Settlers burn olive trees, injure journalist in West Bank](https://www.reuters.com)
+* [The New York Times — U.S. Budget Deficit Nears $2 Trillion](https://www.nytimes.com)""",
+        thought_signature=b'\x12\xf1A\n\xeeA\x01i\x14}\x13\xfa\x9f\x86\x96\xe2\x96\x16\xe3\xc8\xb92(\xe6I\xed\x8ebhw@]\xc7\xc0PZ4\xa1^\x9d \xdd\xe5\xdb4\xe6W\x938\x06\\\xe5\xb6\xa3\xf2\xab# K5\x1c\x12\x9fP\xf2v\x9c\x12\x1d\x9e5\x93\xfb\x1c\x95P\xfc\xc8:\xb0\xbf9\xfa\x06\x8b\xa5s\x94\xe3/\xfe\x12\xdfF\x8e\x0cr...'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3.6-flash' prompt_feedback=None response_id='WK_SatfnBLrUz7IPi8HaYQ' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=682,
+  prompt_token_count=270,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=270
+    ),
+  ],
+  thoughts_token_count=1811,
+  total_token_count=2763
+) model_status=None automatic_function_calling_history=[] parsed=None
