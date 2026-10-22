@@ -1,0 +1,68 @@
+sdk_http_response=HttpResponse(
+  headers=<dict len=12>
+) candidates=[Candidate(
+  content=Content(
+    parts=[
+      Part(
+        text="""# Field Log 404: Bipedal Neuropathy, Kinetic Dyspraxia, and the Eradication of Central Park Equines
+
+**Stardate:** October 22, 2026  
+**Subject:** Biological & Psychological Audit of *Homo sapiens*  
+**Observer:** Unit Xylos-9, Sub-Orbital Medical Observation Division  
+
+Greetings to the High Expanse Medical Council. As requested, I have conducted a routine health assessment of Sector 3 (Terra). My diagnostic conclusion remains unchanged: the dominant carbon-based bipeds are suffering from acute neurological inflammation, motor dyspraxia, and a total collapse of psychological homeostasis. Below is my clinical breakdown of recent terrestrial symptoms.
+
+---
+
+### 1. Neuro-Psychiatric Pathology & Social Contagion
+
+The planetary hierarchy’s cognitive functioning shows signs of severe decay. Specimen Donald Trump recently instructed operative Vivek Ramaswamy to proceed with a propaganda advertisement featuring an opponent’s estranged maternal unit. In organic psychology, weaponizing primal attachment nodes to induce cortisol spikes in political rivals is a crude, toxic mechanism of stress induction. 
+
+Simultaneously, localized paranoid delusions continue to infect communication networks. Conservative media hosts are suffering from auditory hallucinations, insisting Representative Ilhan Omar is operating under a fake label ("not her real name"). These obsession-loops around basic semantic nomenclature point to widespread prefrontal cortex atrophy across the populace.
+
+### 2. Motor Dyspraxia & Arterial Blockages
+
+Physical coordination among high-ranking specimens is similarly compromised. Pete Hegseth, a newly appointed defense administrator, requested a priceless historical globe for his personal office, only for his support organisms to immediately drop and shatter it. In terrestrial behavioral science, accidentally destroying a physical model of the planet you are tasked with military oversight of represents an extraordinary case of spatial dyspraxia.
+
+Systemically, the species' legal circulation is heavily obstructed. The highest judicial tribunal ruled that student identification tokens cannot be utilized for voting in New Hampshire. Functionally, this applies a legislative tourniquet to the political circulatory system, preventing younger biological specimens from participating in social regulation.
+
+On a global scale, the systemic inflammation is reaching fatal thresholds. Prime Minister Netanyahu declared that American and Israeli forces must forcibly dismantle the Iranian political structure. This escalation represents extreme, hyper-aggressive macro-somatic hypertension—a condition that historically leads to catastrophic cellular tissue loss (or "warfare," in native parlance).
+
+### 3. Legal Oncology & Interspecies Therapeutics
+
+In legal medicine, Specimen Trump has been ordered to undergo interrogation by the British Broadcasting Corporation regarding a $10 billion defamation claim. The human reflex to heal emotional wounds using abstract green paper vouchers remains one of their most absurd self-soothing rituals.
+
+However, a rare flicker of autonomic nervous system recovery was observed in the New York municipality. Local authorities finally passed a ban on horse-drawn carriages in Central Park. Relieving four-legged equines from pulling heavy wooden carts through toxic internal-combustion fumes suggests that faint traces of empathy still linger in the human prefrontal cortex.
+
+---
+
+### Diagnostic Summary & Prognosis
+
+*Homo sapiens* remains a volatile patient. The species continues to smash world models, hoard civic privileges, and inflict psychological trauma on its own kin. I recommend continuing planetary quarantine. Immediate intervention is ill-advised, though mild planetary sedation remains an option.
+
+***
+
+### References & Field Data
+
+* [NBC News: Supreme Court says New Hampshire student IDs can’t be used to vote](https://www.nbcnews.com)
+* [The Guardian: Pete Hegseth’s staff break priceless historic globe](https://www.theguardian.com)
+* [The New York Times: New York City Passes Horse Carriage Ban](https://www.nytimes.com)""",
+        thought_signature=b'\x12\xa5H\n\xa2H\x01i\x14}\x13\x12(&\xf3\xc8\xdeX\xee\xc6(\xe2\x0f\x81\xb0\xb7\xa8\x19\x0f*8\\\xe9\x84\x96c\xeb\xb1Z\xd3\xf9n\xfa\xf5\xfc~\x97j6c\xc2\t\xc32u\xe9\xd2[?\xb2\xd0\x8f|\xda\xcd\r\xb9\xbd\xee\x8f](R\xed\x94E0"\xd6\x10i\x84\xc0]\x14\xb9\xa2\xe9dxu\x91R\x81\xc5 C...'
+      ),
+    ],
+    role='model'
+  ),
+  finish_reason=<FinishReason.STOP: 'STOP'>,
+  index=0
+)] create_time=None model_version='gemini-3.6-flash' prompt_feedback=None response_id='AKHaasj9E46OytMPjpy52Qs' usage_metadata=GenerateContentResponseUsageMetadata(
+  candidates_token_count=787,
+  prompt_token_count=268,
+  prompt_tokens_details=[
+    ModalityTokenCount(
+      modality=<MediaModality.TEXT: 'TEXT'>,
+      token_count=268
+    ),
+  ],
+  thoughts_token_count=2108,
+  total_token_count=3163
+) model_status=None automatic_function_calling_history=[] parsed=None
